@@ -10,8 +10,8 @@ class User < ApplicationRecord
   has_many :comments, dependent: :destroy
   has_many :likes, dependent: :destroy
 
-  has_many :friendships
-  has_many :inverse_friendships, class_name: 'Friendship', foreign_key: 'friend_id'
+  has_many :friendships, dependent: :destroy
+  has_many :inverse_friendships, class_name: 'Friendship', foreign_key: 'friend_id', dependent: :destroy
 
   def friends
     friends_array = friendships.map { |m_friendship| m_friendship.friend if m_friendship.confirmed }
@@ -29,6 +29,7 @@ class User < ApplicationRecord
 
   def confirm_friend(user)
     friendship = inverse_friendships.find { |c_friendship| c_friendship.user == user }
+    p "#{friendship}THIS IS THE ERROR"
     friendship.confirmed = true
     friendship.save
   end

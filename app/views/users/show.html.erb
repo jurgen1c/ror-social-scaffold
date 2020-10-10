@@ -1,5 +1,33 @@
 <section class="user-section">
   <h2><%= "Name: #{@user.name}" %></h2>
+  <%= nu_display(current_user, @user)%>
+  
+
+  <br />
+  <p>Total number of friends: <%= @user.friendships.length %></p>
+
+  <h3>List of approved friends</h3>
+  <% @user.friends.each_with_index do |friend, index| friend %>
+    <p>
+      <%= index+1 %> - <%= friend.name %>
+      <%= user_display?(@user, friend)%>
+    </p>
+  <% end %>
+
+  <h3>List of pending friends</h3>
+  <% @user.friend_requests.each do |p_friend| %>
+    <%= p_friend.name %>
+    <%= show_approve(@user, p_friend)%>
+    <%= show_decline(@user, p_friend)%>
+  <% end %>
+
+  <h3>List of friends requests sent</h3>
+  <% @user.pending_friends.each_with_index do |friend, index| friend %>
+    <p><%= index+1 %> - <%= friend.name %> Friend Request sent</p>
+    
+  <% end %>
+
+
   <article class="timeline">
     <h3>Recent posts:</h3>
     <ul class="posts">
