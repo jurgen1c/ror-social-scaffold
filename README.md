@@ -2,11 +2,13 @@
 
 > In this branch we have created the friendship model, controller and table. Also created tests for user and friendship models.
 
+## Live Demo
+- [Live demo link with Heroku](https://dry-beyond-11962.herokuapp.com/)
+
 ## Built With
 
 - Ruby v2.7.0
 - Ruby on Rails v5.2.4
-
 
 ## Getting Started
 
