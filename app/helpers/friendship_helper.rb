@@ -1,3 +1,4 @@
+# rubocop:disable Metrics/CyclomaticComplexity, Metrics/PerceivedComplexity
 module FriendshipHelper
   def nu_display(current_user, n_user)
     return unless n_user != current_user
@@ -44,3 +45,4 @@ module FriendshipHelper
     link_to 'Decline', friendship_path(id: friendship.id), method: :delete if user == current_user
   end
 end
+# rubocop:enable Metrics/CyclomaticComplexity, Metrics/PerceivedComplexity
